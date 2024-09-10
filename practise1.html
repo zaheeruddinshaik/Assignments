@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    
+  
+    function performOperation(operation, num1, num2) {
+    if (operation === "add") {
+      return num1 + num2;
+    } else if (operation === "subtract") {
+        return num1 - num2;
+    } else if (operation === "multiply") {
+       return num1 * num2;
+    } else if (operation === "divide") {
+        return num2 !== 0 ? num1 / num2 : "Cannot divide by zero";
+    } else {
+       return "Invalid operation";
+    }
+}
+console.log(performOperation("add", 5, 3));        // 8
+console.log(performOperation("subtract", 10, 5));  // 5
+console.log(performOperation("multiply", 4, 6));   // 24
+console.log(performOperation("divide", 8, 2));     // 4
+console.log(performOperation("divide", 8, 0));     // "Cannot divide by zero"
+
+//2 question//
+
+// function getuserinput(){
+//   operation=prompt(" ENTER the operation")
+//    num1=parseFloat(prompt("Enter your 1numbers"))
+//    num2= parseFloat(prompt("Enter your 2numbers"))
+
+//   if (operation=='add')
+//       return (num1+num2)
+//   else if(operation =='sub')
+//     return (num1-num2)
+//   else if(operation =='mult')
+//     return (num1*num2)
+//   else if(operation=='div')
+//     return (num1/num2)
+//   else("Invalid")
+
+
+// }
+// console.log(getuserinput())
+
+//3 question//
+// Function to perform basic calculations
+function calculate() {
+    let zaheer = true;
+
+    while (zaheer) {
+     const operation = prompt("Enter your operation: +, -, *, /")
+    const num1 = parseFloat(prompt("Enter the first number:"))
+    const num2 = parseFloat(prompt("Enter the second number:"))
+        let result;
+        switch (operation) {
+        case "+":
+                result = num1 + num2;
+           break;
+            case "-":
+                result = num1 - num2;
+            break;
+            case "*":
+                result = num1 * num2;
+                break;
+            case "/":
+               result = num1 / num2;
+             break;
+            default:
+                alert("Invalid operation! Please try again.");
+                continue;
+        }
+
+        alert(`The result is: ${result}`);
+        const anotherCalculation = prompt("Do you want to perform another calculation? (yes/no)");
+        
+        if (anotherCalculation !== "yes") {
+            zaheer = false;
+        }
+    }
+
+    alert("Goodbye!");
+}
+
+calculate();
+//4
+// Initialize an empty array to store the calculation history
+let calculationHistory = [];
+
+// Function to perform a calculation and store the operation and result
+function calculate(operation, num1, num2) {
+    let result;
+    
+    // Perform the operation based on the input
+    switch (operation) {
+        case 'add':
+            result = num1 + num2;
+            break;
+        case 'subtract':
+            result = num1 - num2;
+            break;
+        case 'multiply':
+            result = num1 * num2;
+            break;
+        case 'divide':
+            result = num1 / num2;
+            break;
+        default:
+            console.log('Invalid operation');
+            return;
+    }
+    
+    // Store the operation and result in the history array
+    calculationHistory.push(`${num1} ${operation} ${num2} = ${result}`);
+    
+    return result;
+}
+
+// Function to display the calculation history
+function displayHistory() {
+    if (calculationHistory.length === 0) {
+        console.log("No calculations");
+        return;
+    }
+
+    console.log("Calculation History:");
+    calculationHistory.forEach((calculation, index) => {
+        console.log(`${index + 1}: ${calculation}`);
+    });
+}
+
+// Example usage
+calculate('add', 5, 3);      
+calculate('subtract', 10, 4); 
+calculate('multiply', 2, 3);  
+calculate('divide', 8, 2);   
+
+displayHistory();
+</script>
+</html>
+    
