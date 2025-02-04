@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Flipkart</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           font-family: Roboto, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f1f3f6;
+      }
+
+        .header {
+            background-color: #2874f0;
+            padding: 10px 0;
+            width: 100%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: white;
+            font-size: 20px;
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        .login-container {
+            display: flex;
+            margin: 30px auto;
+            max-width: 850px;
+        }
+
+        .login-form {
+            background: #fff;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-banner {
+            background: #2874f0;
+            width: 40%;
+            padding: 40px;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .login-banner h2 {
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .login-banner p {
+            font-size: 18px;
+            line-height: 150%;
+            opacity: 0.9;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+        margin-bottom: 8px;
+            color: #212121;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+         border: 1px solid #dbdbdb;
+            border-radius: 2px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            border-color: #2874f0;
+            outline: none;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+             background: #fb641b;
+            color: white;
+            border: none;
+            border-radius: 2px;
+             font-size: 15px;
+            font-weight: 500;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+
+       .btn:hover {
+            background: #ff7837;
+        }
+
+        .signup-link {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .signup-link a {
+            color: #2874f0;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 768px) {
+            .login-banner {
+                display: none;
+            }
+            
+            .login-form {
+                max-width: 100%;
+                padding: 20px;
+            }
+
+            .login-container {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">Flipkart</div>
+        </div>
+    </header>
+
+    <div class="login-container">
+        <div class="login-banner">
+            <div>
+                <h2>Login</h2>
+                <p>Get access to your Orders, Wishlist and Recommendations</p>
+            </div>
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtuWcAi1ycS0k2IdJ6SaWiTtSVjFQCpZQOPg&s" alt="Login banner" />
+        </div>
+
+        <div class="login-form">
+            <form>
+                <div class="form-group">
+                    <label>Enter Email/Mobile number</label>
+                    <input type="text" id="useremail" placeholder="Enter Email/Mobile number">
+                </div>
+
+                <div class="form-group">
+                    <label>Enter Password</label>
+                    <input type="password" id="userpass" placeholder="Enter Password">
+                </div>
+
+                <button type="button" class="btn" id="login">Login</button>
+
+                <div class="signup-link">
+                    New to Flipkart? <a href="registrasation1.html">Create an account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector("#login").addEventListener("click", function () {
+            let username = document.querySelector('#useremail').value;
+            let userPassword = document.querySelector('#userpass').value;
+
+            if (username && userPassword) {
+                let usersArray = JSON.parse(localStorage.getItem("usersArray")) || [];
+                let userFound = usersArray.some(user => user.email === username && user.password === userPassword);
+
+                if (userFound) {
+                    window.location.href = "index.html";
+                } else {
+                    alert("Invalid email or password");
+                }
+            } else {
+                alert("Please enter all the required details");
+            }
+        });
+    </script>
+</body>
+</html>
